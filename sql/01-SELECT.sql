@@ -293,8 +293,8 @@ GROUP BY
 
 -- Zadatak: Ispisati kategorije i broj proizvoda u kategoriji i broj komada u kategoriji
 SELECT
-	category
-	COUNT(id)
+	category,
+	COUNT(id),
 	SUM(quantity)
 FROM
 	products
