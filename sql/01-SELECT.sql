@@ -1,7 +1,7 @@
 -- Osnove SELECT upita
 --
 -- Zadatak: Selektuj sve redove iz tabele `products`
-SELECT * FROM products;
+SELECT * FROM `products`;
 
 
 -- Zadatak: Selektuj sve redove iz tabele `products` ali prikazati samo kolone `category`, `title` i `price`
