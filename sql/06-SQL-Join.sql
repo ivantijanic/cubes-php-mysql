@@ -65,10 +65,69 @@ JOIN
 
 -- SQL LEFT JOIN
 -- Zadatak: Selektuj id proizvoda, naziv proizvoda, id kategorije i naziv kategorije  ZA SVE PROIZVODE I ONE KOJI NEMAJU KATEGORIJU
+SELECT
+	products.id,
+	products.title,
+	products.category_id,
+	categories.title AS category_title
+FROM
+	products
+LEFT JOIN
+	categories ON products.category_id = categories.id;
+
 -- Zadatak: Selektuj id proizvoda, naziv proizvoda, id brenda i naziv brenda  ZA SVE PROIZVODE I ONE KOJI NEMAJU BREND
+SELECT
+	p.id,
+	p.title,
+	b.id AS brand_id,
+	b.title AS brand_title
+FROM
+	products AS p
+LEFT JOIN
+	brands AS b ON p.brand_id = b.id;
+
+
 -- Zadatak: Selektuj id proizvoda i naziv proizvoda za sve proizvode koji NEMAJU KATEGORIJU
+SELECT
+	products.id,
+	products.title,
+	products.category_id,
+	categories.id,
+	categories.title
+FROM
+	products
+LEFT JOIN
+	categories ON products.category_id = categories.id
+
+WHERE 
+	categories.id IS NULL;
+
 
 -- SQL RIGHT JOIN
 
 -- Zadatak: Selektuj nazive kategorija koje nemaju proizvode
+SELECT 
+	categories.id,
+	categories.title,
+	products.id,
+	products.category_id
+FROM
+	categories
+LEFT JOIN
+	products ON categories.id = products.category_id
+WHERE
+	products.category_id IS NULL;
+-- Varijanta sa right join
+SELECT 
+	categories.id,
+	categories.title,
+	products.id,
+	products.category_id
+FROM
+	products
+RIGHT JOIN
+	categories ON categories.id = products.category_id
+WHERE
+	products.category_id IS NULL;
+
 -- Zadatak: Selektuj nazive brendova koji nemaju proizvode
