@@ -6,8 +6,16 @@ if ($link === false) {
 	die('MySQL Error: ' . mysqli_connect_error());
 }
 
-$result = mysqli_query($link, 'SELECT * FROM `products`');
 
+//Ulazni parametar
+$categoryId = $_GET['category_id'];
+//
+$query = "SELECT * FROM products WHERE category_id = '" . mysqli_real_escape_string($link, $categoryId) . "' ORDER BY price DESC";
+
+die($query);
+
+$result = mysqli_query($link, $query);            
+ 
 if ($result === false) {
 	die('MySQL Error: ' . mysqli_error($link));
 }
