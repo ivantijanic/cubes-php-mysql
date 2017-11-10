@@ -47,9 +47,16 @@
 									<div class="col-md-5">
 										<select name="group_id" class="form-control">
 											<option value="">--- Select Group ---</option>
-											<option value="1">Group 1</option>
-											<option value="2">Group 3</option>
-											<option value="3">Group 4</option>
+											<?php foreach ($groupList as $groupId => $groupTitle) {?>
+											<option 
+												value="<?php echo htmlspecialchars($groupId);?>"
+												
+												<?php if($groupId == $formData['group_id']) {?>
+												selected="selected"
+												<?php }?>
+												
+												><?php echo htmlspecialchars($groupTitle);?></option>
+											<?php }?>
 										</select>
 									</div>
 									<div class="col-md-4">

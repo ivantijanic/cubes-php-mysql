@@ -91,7 +91,7 @@
 									<li class="dropdown">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin</a>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">Crud Products</a></li>
+											<li><a href="/crud-product-list.php">Crud Products</a></li>
 											<li><a href="/crud-brand-list.php">Crud Brands</a></li>
 											<li><a href="/crud-category-list.php">Crud Categories</a></li>
 											<li><a href="#">Crud Groups</a></li>
