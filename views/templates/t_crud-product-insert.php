@@ -21,7 +21,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<form action="" method="post" class="form-horizontal">
+						<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
 							<input type="hidden" name="task" value="insert">
 							
 							<fieldset>
@@ -121,8 +121,8 @@
 								<div class="form-group">
 									<label class="col-md-3 control-label">On Sale</label>  
 									<div class="col-md-5">
-										<label><input name="on_sale" type="radio" checked> Yes</label>
-										<label><input name="on_sale" type="radio"> No</label>
+										<label><input name="on_sale" type="radio" value="1" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 1) {echo "checked";} ?> > Yes</label>
+										<label><input name="on_sale" type="radio" value="0" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 0) {echo "checked";} ?> > No</label>
 									</div>
 									<div class="col-md-4">
 										<?php if (!empty($formErrors["on_sale"])) { ?>
@@ -138,7 +138,7 @@
 									<label class="col-md-3 control-label">Discount</label>  
 									<div class="col-md-5">
 										<div class="input-group">
-											<input value="<?php echo isset($formData["discount"]) ? htmlspecialchars($formData["discount"]) : "";?>" type="text" name="price" class="form-control">
+											<input value="<?php echo isset($formData["discount"]) ? htmlspecialchars($formData["discount"]) : "";?>" type="text" name="discount" class="form-control">
 											<div class="input-group-addon">%</div>
 										</div>
 									</div>

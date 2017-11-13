@@ -21,7 +21,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-12">
-						<form action="" method="post" class="form-horizontal">
+						<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
 							<input type="hidden" name="task" value="save">
 							
 							<fieldset>
@@ -32,9 +32,16 @@
 									<div class="col-md-5">
 										<select name="category_id" class="form-control">
 											<option value="">--- Select Category ---</option>
-											<option value="1">Category 1</option>
-											<option value="2">Category 3</option>
-											<option value="3">Category 4</option>
+											<?php foreach ($categoryList as $categoryId => $categoryLabel) {?>
+											<option 
+												value="<?php echo htmlspecialchars($categoryId);?>"
+												
+												<?php if($categoryId == $formData['category_id']) {?>
+												selected="selected"
+												<?php }?>
+												
+												><?php echo htmlspecialchars($categoryLabel);?></option>
+											<?php }?>
 										</select>
 									</div>
 									<div class="col-md-4">
@@ -52,9 +59,16 @@
 									<div class="col-md-5">
 										<select name="brand_id" class="form-control">
 											<option value="">--- Select Brand ---</option>
-											<option value="1">Brand 1</option>
-											<option value="2">Brand 3</option>
-											<option value="3">Brand 4</option>
+											<?php foreach ($brandList as $brandId => $brandTitle) {?>
+											<option 
+												value="<?php echo htmlspecialchars($brandId);?>"
+												
+												<?php if($brandId == $formData['brand_id']) {?>
+												selected="selected"
+												<?php }?>
+												
+												><?php echo htmlspecialchars($brandTitle);?></option>
+											<?php }?>
 										</select>
 									</div>
 									<div class="col-md-4">
@@ -107,8 +121,8 @@
 								<div class="form-group">
 									<label class="col-md-3 control-label">On Sale</label>  
 									<div class="col-md-5">
-										<label><input name="on_sale" type="radio" checked> Yes</label>
-										<label><input name="on_sale" type="radio"> No</label>
+										<label><input name="on_sale" type="radio" value="1" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 1) {echo "checked";} ?> > Yes</label>
+										<label><input name="on_sale" type="radio" value="0" <?php if (isset($formData['on_sale']) && $formData['on_sale'] == 0) {echo "checked";} ?> > No</label>
 									</div>
 									<div class="col-md-4">
 										<?php if (!empty($formErrors["on_sale"])) { ?>
@@ -124,7 +138,7 @@
 									<label class="col-md-3 control-label">Discount</label>  
 									<div class="col-md-5">
 										<div class="input-group">
-											<input value="<?php echo isset($formData["discount"]) ? htmlspecialchars($formData["discount"]) : "";?>" type="text" name="price" class="form-control">
+											<input value="<?php echo isset($formData["discount"]) ? htmlspecialchars($formData["discount"]) : "";?>" type="text" name="discount" class="form-control">
 											<div class="input-group-addon">%</div>
 										</div>
 									</div>
@@ -143,7 +157,7 @@
 								<legend>Photo</legend>
 								<div class="row">
 									<div class="col-md-8 col-md-offset-2">
-										<img src="/skins/tema/img/portfolio/enkel-home-blue.png" class="img-responsive">
+										<img src="/uploads/products/<?php echo htmlspecialchars($product['photo_filename']); ?>" class="img-responsive">
 									</div>
 								</div>
 								<div class="form-group">
