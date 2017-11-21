@@ -9,6 +9,7 @@ if (!isUserLoggedIn()) {
 }
 
 
+
 require_once __DIR__ . '/models/m_brands.php';
 
 $brands = brandsFetchAll();
